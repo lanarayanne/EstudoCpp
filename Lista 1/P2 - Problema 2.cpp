@@ -38,16 +38,17 @@ string binario(int num, int n) {
 }
 
 void gerar(vector<string> &seqs, int n, string tmp) {
-    if (n == 0) {
+    static int atual = 0;
+    double total = pow(2,n);
+
+    if (atual == total) {
+        atual = 0;
         return;
     }
-    double quant = pow(2,n);
-    int num = 0;
 
-    while (num < quant ) {
-        seqs. push_back(binario(num, n));
-        num++;
-    }
+    seqs.push_back(binario(atual, n));
+    atual++;
+    gerar(seqs, n, tmp);
 }
 
 
@@ -56,6 +57,7 @@ vector<string> gerar(int n) {
     gerar(seqs, n, string(""));
     return seqs;
 }
+
 int main() {
     for (auto &s : gerar(3)) {
         cout << s << endl;

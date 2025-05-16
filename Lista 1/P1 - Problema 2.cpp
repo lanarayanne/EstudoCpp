@@ -4,21 +4,21 @@
 using namespace std;
 
 int maior(const vector<int> &arr) {
-    vector<int> vet = arr;
 
-    int size = vet.size();
-    int num = vet[0];
+    vector<int> arrCpy = arr;
+    int size = arrCpy.size();
+    int num = arrCpy[0];
 
     if (size == 1) {
-        return vet[0];
+        return arrCpy[0];
     } else {
-        vet.erase(vet.begin());
+        arrCpy.erase(arrCpy.begin());
 
-        if (num > maior(vet)) {
+        if (num > maior(arrCpy)) {
             return num;
         }
         else {
-            return maior(vet);
+            return maior(arrCpy);
         }
     }
 }
