@@ -13,26 +13,30 @@ public:
 			if(s[i] == '(' || s[i] == '[' || s[i] == '{' ) {
 				pilha.push(s[i]);
 			}
+			
+			if (pilha.empty()){
+			    return false;
+			}
 
 			if(pilha.top() == '(' && s[i] == ')' || pilha.top() == '[' && s[i] == ']' || pilha.top() == '{' && s[i] == '}' ) {
 				pilha.pop();
 			}
 
 		}
-		
+
 		if (pilha.empty()) {
-				return true;
-			} else {
-				return false;
-			}
-	}
-	};
-
-	int main() {
-		string testes[] = { "[{()}]", "()[]{}", "{[(}])", "(][){}", "}{)(][" };
-		for (auto &s : testes) {
-			cout << s << ": "<< (Solution().isValid(s)?"Valida":"Invalida")<<endl;
-
+			return true;
+		} else {
+			return false;
 		}
-		return 0;
 	}
+};
+
+int main() {
+	string testes[] = { "[{()}]", "()[]{}", "{[(}])", "(][){}", "}{)(][" };
+	for (auto &s : testes) {
+		cout << s << ": "<< (Solution().isValid(s)?"Valida":"Invalida")<<endl;
+
+	}
+	return 0;
+}
